@@ -191,6 +191,24 @@ Este proyecto está diseñado especialmente para **desarrolladores que nunca se 
 
 ## 📁 Estructura del Proyecto
 
+### 🏗️ **¿Qué es esta estructura?**
+
+Este proyecto sigue la **arquitectura de microservicios moderna** con las mejores prácticas de desarrollo. Cada servicio es un **proyecto Maven independiente** que se puede desarrollar, probar y desplegar por separado.
+
+#### 🎯 **¿Por qué esta organización?**
+- **🔧 Microservicios**: Cada servicio tiene su propia responsabilidad y base de código
+- **📦 Maven**: Cada directorio de servicio es un proyecto Maven completo con `pom.xml`
+- **🐳 Docker**: Cada servicio tiene su propio `Dockerfile` para containerización
+- **🔄 Independencia**: Puedes trabajar en un servicio sin afectar los demás
+- **📊 Monitoreo**: Stack completo de observabilidad incluida
+
+#### 📂 **Tipos de directorios:**
+- **`api-gateway/`, `*-service/`**: Servicios de aplicación (proyectos Maven)
+- **`monitoring/`**: Stack de observabilidad (Grafana, Prometheus, Loki)
+- **`oracle/`**: Base de datos y scripts de inicialización
+- **`docs/`**: Documentación completa del proyecto
+- **Archivos raíz**: Configuración de Docker y CI/CD
+
 ```
 ├── 📚 docs/                          # Documentación completa
 │   ├── microservices.md             # Arquitectura de microservicios
@@ -199,30 +217,85 @@ Este proyecto está diseñado especialmente para **desarrolladores que nunca se 
 │   ├── gitlab-ci.md                 # CI/CD con GitLab
 │   ├── grafana.md                   # Dashboards y métricas
 │   └── ...
-├── 🐳 docker/                        # Configuración de Docker
-│   ├── docker-compose.yml           # Stack completo local
-│   ├── docker-compose.swarm.yml     # Despliegue en Swarm
-│   └── Dockerfile                   # Imagen de la aplicación
+├── 🐳 api-gateway/                   # API Gateway Service (Maven Project)
+│   ├── Dockerfile                   # Docker configuration
+│   ├── pom.xml                      # Maven configuration
+│   └── src/                         # Source directory
+│       ├── main/
+│       │   ├── java/                # Java source code (uy.bcu.gateway)
+│       │   └── resources/           # Application resources
+│       └── test/                    # Test directory
+│           ├── java/                # Test source code
+│           └── resources/           # Test resources
+├── ⚙️ config-server/                 # Config Server Service (Maven Project)
+│   ├── Dockerfile                   # Docker configuration
+│   ├── pom.xml                      # Maven configuration
+│   └── src/                         # Source directory
+│       ├── main/
+│       │   ├── java/                # Java source code (uy.bcu.config)
+│       │   └── resources/           # Application resources
+│       └── test/                    # Test directory
+│           ├── java/                # Test source code
+│           └── resources/           # Test resources
+├── 🏷️ service-registry/              # Service Registry (Eureka) (Maven Project)
+│   ├── Dockerfile                   # Docker configuration
+│   ├── pom.xml                      # Maven configuration
+│   └── src/                         # Source directory
+│       ├── main/
+│       │   ├── java/                # Java source code (uy.bcu.registry)
+│       │   └── resources/           # Application resources
+│       └── test/                    # Test directory
+│           ├── java/                # Test source code
+│           └── resources/           # Test resources
+├── 👥 usuario-service/               # Usuario Service (Maven Project)
+│   ├── Dockerfile                   # Docker configuration
+│   ├── pom.xml                      # Maven configuration
+│   └── src/                         # Source directory
+│       ├── main/
+│       │   ├── java/                # Java source code (uy.bcu.usuario)
+│       │   └── resources/           # Application resources
+│       └── test/                    # Test directory
+│           ├── java/                # Test source code
+│           └── resources/           # Test resources
+├── 📦 product-service/               # Product Service (Maven Project)
+│   ├── Dockerfile                   # Docker configuration
+│   ├── pom.xml                      # Maven configuration
+│   └── src/                         # Source directory
+│       ├── main/
+│       │   ├── java/                # Java source code (uy.bcu.product)
+│       │   └── resources/           # Application resources
+│       └── test/                    # Test directory
+│           ├── java/                # Test source code
+│           └── resources/           # Test resources
+├── 📋 order-service/                 # Order Service (Maven Project)
+│   ├── Dockerfile                   # Docker configuration
+│   ├── pom.xml                      # Maven configuration
+│   └── src/                         # Source directory
+│       ├── main/
+│       │   ├── java/                # Java source code (uy.bcu.order)
+│       │   └── resources/           # Application resources
+│       └── test/                    # Test directory
+│           ├── java/                # Test source code
+│           └── resources/           # Test resources
+├── 📢 notification-service/          # Notification Service (Maven Project)
+│   ├── Dockerfile                   # Docker configuration
+│   ├── pom.xml                      # Maven configuration
+│   └── src/                         # Source directory
+│       ├── main/
+│       │   ├── java/                # Java source code (uy.bcu.notification)
+│       │   └── resources/           # Application resources
+│       └── test/                    # Test directory
+│           ├── java/                # Test source code
+│           └── resources/           # Test resources
 ├── 📊 monitoring/                    # Stack de observabilidad
 │   ├── grafana/                     # Dashboards preconfigurados
 │   ├── prometheus/                  # Métricas y alertas
 │   └── loki/                        # Agregación de logs
-├── 🔍 quality/                       # Calidad de código
-│   └── sonar-project.properties     # Configuración de SonarQube
 ├── 🔄 .gitlab-ci.yml                 # Pipeline de CI/CD
 ├── 🗄️ oracle/                        # Base de datos
 │   └── init/                        # Scripts de inicialización
-├── 📝 src/main/java/                 # Código fuente
-│   └── uy/bcu/                      # Paquete base
-│       ├── config/                  # Config Server
-│       ├── gateway/                 # API Gateway
-│       ├── registry/                # Service Registry
-│       ├── usuario/                 # Usuario Service
-│       ├── product/                 # Product Service
-│       ├── notification/            # Notification Service
-│       └── order/                   # Order Service
-├── 🧪 src/test/                      # Tests automatizados
-├── 📋 pom.xml                        # Configuración Maven
+├── 🐳 docker-compose.yml             # Stack completo local
+├── 🐙 docker-compose.swarm.yml       # Despliegue en Swarm
 ├── 🐧 start.sh                       # Script de inicio Linux
 ├── 🪟 start.bat                      # Script de inicio Windows
 └── ⚙️ .env.example                   # Variables de entorno
@@ -238,6 +311,7 @@ Este proyecto está diseñado especialmente para **desarrolladores que nunca se 
 2. **🐳 Instala**: Docker Desktop (es gratuito)
 3. **▶️ Ejecuta**: El comando más simple del mundo:
    ```bash
+   # Ejecutar desde la raíz del proyecto (directorio Proyecto_Tecnologias)
    docker-compose up -d
    ```
 4. **🌐 Abre**: http://localhost:8080 en tu navegador
@@ -247,12 +321,14 @@ Este proyecto está diseñado especialmente para **desarrolladores que nunca se 
 
 1. **Clonar el repositorio**
     ```bash
+    # Ejecutar desde cualquier directorio
     git clone <tu-repositorio>
     cd Proyecto_Tecnologias
     ```
 
 2. **Levantar todo el stack**
     ```bash
+    # Ejecutar desde la raíz del proyecto (directorio Proyecto_Tecnologias)
     # Levantar todos los servicios
     docker-compose up -d
 
@@ -269,6 +345,7 @@ Este proyecto está diseñado especialmente para **desarrolladores que nunca se 
 
 4. **Verificar que todo funciona**
     ```bash
+    # Ejecutar desde la raíz del proyecto (directorio Proyecto_Tecnologias)
     # Ver estado de todos los servicios
     docker-compose ps
 
@@ -281,6 +358,7 @@ Este proyecto está diseñado especialmente para **desarrolladores que nunca se 
 Si quieres trabajar en un servicio específico:
 
 ```bash
+# Ejecutar desde la raíz del proyecto (directorio Proyecto_Tecnologias)
 # Solo API Gateway
 docker-compose up api-gateway
 
@@ -470,11 +548,14 @@ El proyecto incluye una stack completa de monitoreo:
 
 ### Desarrollo Local
 ```bash
+# Ejecutar desde la raíz del proyecto (directorio Proyecto_Tecnologias)
 docker-compose -f docker-compose.dev.yml up -d
 ```
 
 ### Producción con Docker Swarm
 ```bash
+# Ejecutar desde la raíz del proyecto (directorio Proyecto_Tecnologias)
+# Requiere Docker Swarm inicializado (docker swarm init)
 docker stack deploy -c docker-compose.swarm.yml tech-stack
 ```
 
