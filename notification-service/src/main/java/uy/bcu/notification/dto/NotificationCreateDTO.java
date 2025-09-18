@@ -1,4 +1,4 @@
-package uy.bcu.notification;
+package uy.bcu.notification.dto;
 
 import javax.validation.constraints.NotBlank;
 

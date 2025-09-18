@@ -207,8 +207,8 @@ docker run --memory=512m --cpus=0.5 mi-app
 ### Herramientas y Utilidades
 
 #### Desarrollo
-- **Docker Desktop**: IDE para desarrollo local
-- **VS Code Docker Extension**: Integración con editor
+- **Docker Desktop**: Entorno de desarrollo local con Docker Engine
+- **VS Code Docker Extension**: Integración con editor para gestión de contenedores
 - **Docker Scout**: Análisis de seguridad de imágenes
 
 #### Monitoreo
