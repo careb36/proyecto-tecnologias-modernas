@@ -1,0 +1,57 @@
+# Configuración del Order Service
+spring:
+  application:
+    name: order-service
+
+  cloud:
+    config:
+      uri: http://config-server:8888
+      fail-fast: true
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:oracle:thin:@oracle:1521:xe}
+    username: ${DATABASE_USER:system}
+    password: ${DATABASE_PASSWORD:oracle}
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+
+springdoc:
+  api-docs:
+    path: /pedido/v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+  info:
+    title: Order Service API
+    description: Microservicio para procesamiento de pedidos
+    version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+# Configuración para Feign Clients
+feign:
+  client:
+    config:
+      usuario-service:
+        url: http://usuario-service:8081
+      product-service:
+        url: http://product-service:8082
