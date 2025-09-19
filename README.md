@@ -112,6 +112,7 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 - **SonarQube** - Análisis de calidad de código
 - **JaCoCo** - Cobertura de pruebas
 - **JUnit 5** - Framework de testing moderno
+- **Mockito** - Framework de mocking para tests unitarios
 - **Testcontainers** - Tests de integración
 - **Maven** - Gestión de dependencias
 
@@ -654,7 +655,7 @@ docker-compose ps
 - ✅ **Logging estructurado** con SLF4J
 
 ### Testing
-- ✅ **Tests unitarios** con JUnit 5
+- ✅ **Tests unitarios** con JUnit 5 y Mockito
 - ✅ **Tests de integración** con Testcontainers
 - ✅ **Cobertura de código** con JaCoCo
 - ✅ **Quality Gates** con SonarQube

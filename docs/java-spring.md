@@ -318,6 +318,23 @@ public class UsuarioService {
 
 ## Testing con Spring Boot
 
+### Frameworks de Testing Utilizados
+
+- **JUnit 5**: Framework principal para escribir y ejecutar tests
+- **Mockito**: Framework para crear mocks y stubs de dependencias
+- **Spring Boot Test**: Utilidades específicas para testing de aplicaciones Spring
+
+### Dependencias en pom.xml
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+```
+
+Esta dependencia incluye automáticamente JUnit 5, Mockito, AssertJ y otras herramientas de testing.
+
 ### Test Unitario Básico
 ```java
 package uy.bcu.miprimeraapp;
@@ -335,15 +352,55 @@ class MiPrimeraAppApplicationTests {
 }
 ```
 
-### Test de Controller
+### Test Unitario con Mockito
+```java
+package uy.bcu.miprimeraapp.service;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+public class UsuarioServiceTest {
+
+    @Mock
+    private UsuarioRepository usuarioRepository;
+
+    @InjectMocks
+    private UsuarioService usuarioService;
+
+    @Test
+    public void testCrearUsuario() {
+        // Given
+        Usuario usuario = new Usuario("Juan", "juan@email.com");
+        when(usuarioRepository.save(usuario)).thenReturn(usuario);
+
+        // When
+        Usuario resultado = usuarioService.crearUsuario(usuario);
+
+        // Then
+        assertThat(resultado.getNombre()).isEqualTo("Juan");
+        assertThat(resultado.getEmail()).isEqualTo("juan@email.com");
+    }
+}
+```
+
+### Test de Controller con MockMvc
 ```java
 package uy.bcu.miprimeraapp.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -354,11 +411,61 @@ public class HolaMundoControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private UsuarioService usuarioService;
+
     @Test
     public void testHolaMundo() throws Exception {
         mockMvc.perform(get("/hola"))
                .andExpect(status().isOk())
                .andExpect(content().string("¡Hola Mundo desde Spring Boot!"));
+    }
+
+    @Test
+    public void testUsuarioConMock() throws Exception {
+        // Given
+        when(usuarioService.obtenerSaludo("Juan")).thenReturn("Hola Juan!");
+
+        // When & Then
+        mockMvc.perform(get("/usuario/Juan"))
+               .andExpect(status().isOk())
+               .andExpect(content().string("Hola Juan!"));
+    }
+}
+```
+
+### Test de Integración con Testcontainers
+```java
+package uy.bcu.miprimeraapp;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
+@SpringBootTest
+@Testcontainers
+public class IntegrationTest {
+
+    @Container
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:13")
+        .withDatabaseName("testdb")
+        .withUsername("test")
+        .withPassword("test");
+
+    @DynamicPropertySource
+    static void configureProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.datasource.username", postgres::getUsername);
+        registry.add("spring.datasource.password", postgres::getPassword);
+    }
+
+    @Test
+    void testConBaseDeDatosReal() {
+        // Test que usa una base de datos PostgreSQL real en contenedor
     }
 }
 ```
