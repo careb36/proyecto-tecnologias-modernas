@@ -5,6 +5,7 @@
 Java es uno de los lenguajes de programación más utilizados en el mundo empresarial. Fue creado en 1995 por Sun Microsystems y adquirido por Oracle en 2010.
 
 ### Ventajas de Java
+
 - **Plataforma independiente**: "Escribe una vez, ejecuta en cualquier lugar"
 - **Orientado a objetos**: Todo es un objeto
 - **Robusto y seguro**: Manejo automático de memoria
@@ -16,6 +17,7 @@ Java es uno de los lenguajes de programación más utilizados en el mundo empres
 Spring Boot es un framework que simplifica el desarrollo de aplicaciones Java. Antes de Spring Boot, configurar una aplicación Spring era muy complicado.
 
 ### ¿Por qué Spring Boot?
+
 - **Configuración automática**: No necesitas configurar XML complejo
 - **Servidor embebido**: Viene con Tomcat incluido
 - **Producción lista**: Incluye métricas, health checks, etc.
@@ -24,29 +26,97 @@ Spring Boot es un framework que simplifica el desarrollo de aplicaciones Java. A
 ## Instalación y Configuración
 
 ### 1. Instalar Java 11+
-```bash
-# Verificar si Java está instalado
-java -version
 
-# Si no está instalado, descargar desde:
-# https://adoptium.net/ (recomendado)
-# o https://www.oracle.com/java/
+- Windows (PowerShell)
+
+```powershell
+# Requiere Windows 10/11 con winget
+winget install --id EclipseAdoptium.Temurin.11.JDK -e --source winget
+
+# Configurar JAVA_HOME y PATH (persistente)
+setx JAVA_HOME "C:\Program Files\Eclipse Adoptium\jdk-11"
+setx PATH "%PATH%;%JAVA_HOME%\bin"
+
+# Verificar instalación
+java -version
 ```
 
-### 2. Instalar Maven
+Alternativa (Windows con Chocolatey):
+
+```powershell
+choco install temurin11 -y
+java -version
+```
+
+- macOS (Homebrew)
+
 ```bash
-# Verificar Maven
+brew install --cask temurin11
+echo 'export JAVA_HOME=$(/usr/libexec/java_home -v 11)' >> ~/.zshrc
+echo 'export PATH="$JAVA_HOME/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+# Verificar
+java -version
+```
+
+- Ubuntu/Debian
+
+```bash
+sudo apt update && sudo apt install -y openjdk-11-jdk
+echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64' >> ~/.bashrc
+echo 'export PATH="$JAVA_HOME/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# Verificar
+java -version
+```
+
+Referencias:
+
+- Adoptium (recomendado): <https://adoptium.net/>
+- Oracle JDK: <https://www.oracle.com/java/>
+
+### 2. Instalar Maven
+
+- Windows (PowerShell)
+
+```powershell
+# Requiere winget
+winget install --id Apache.Maven -e --source winget
+
+# (Opcional) Configurar MAVEN_HOME si es necesario
+# Ajusta el path si difiere en tu máquina
+setx MAVEN_HOME "C:\Program Files\Apache\maven"
+setx PATH "%PATH%;%MAVEN_HOME%\bin"
+
+# Verificar
 mvn -version
+```
 
-# Instalar en Ubuntu/Debian
-sudo apt update
-sudo apt install maven
+Alternativa (Windows con Chocolatey):
 
-# Instalar en macOS con Homebrew
+```powershell
+choco install maven -y
+mvn -version
+```
+
+- macOS (Homebrew)
+
+```bash
 brew install maven
+mvn -version
+```
+
+- Ubuntu/Debian
+
+```bash
+sudo apt update && sudo apt install -y maven
+mvn -version
 ```
 
 ### 3. IDE Recomendado
+
 - **Visual Studio Code** (gratuito, recomendado para principiantes)
 - **IntelliJ IDEA Community** (gratuito)
 - **Eclipse** (gratuito)
@@ -56,7 +126,8 @@ brew install maven
 ### Crear el Proyecto
 
 #### Opción 1: Spring Initializr (Recomendado)
-1. Ve a https://start.spring.io/
+
+1. Ve a <https://start.spring.io/>
 2. Selecciona:
    - **Project**: Maven Project
    - **Language**: Java
@@ -75,6 +146,7 @@ brew install maven
 4. Descarga el ZIP y descomprímelo
 
 #### Opción 2: Línea de comandos
+
 ```bash
 # Crear proyecto básico
 mvn archetype:generate \
@@ -85,6 +157,7 @@ mvn archetype:generate \
 ```
 
 ### Estructura del Proyecto
+
 ```
 mi-primera-app/
 ├── src/
@@ -125,6 +198,7 @@ public class MiPrimeraAppApplication {
 ```
 
 **Explicación:**
+
 - `@SpringBootApplication`: Anotación que configura todo automáticamente
 - `SpringApplication.run()`: Inicia la aplicación
 - Puerto por defecto: 8080
@@ -132,6 +206,7 @@ public class MiPrimeraAppApplication {
 ## Crear tu Primer Endpoint REST
 
 ### Paso 1: Crear un Controller
+
 ```java
 package uy.bcu.miprimeraapp.controller;
 
@@ -149,18 +224,21 @@ public class HolaMundoController {
 ```
 
 ### Paso 2: Ejecutar la aplicación
+
 ```bash
 # Desde la raíz del proyecto
 mvn spring-boot:run
 ```
 
 ### Paso 3: Probar el endpoint
+
 ```bash
 # En otra terminal
 curl http://localhost:8080/hola
 ```
 
 **Resultado esperado:**
+
 ```
 ¡Hola Mundo desde Spring Boot!
 ```
@@ -168,6 +246,7 @@ curl http://localhost:8080/hola
 ## Conceptos Básicos de Spring Boot
 
 ### 1. Inyección de Dependencias
+
 Spring administra automáticamente la creación de objetos.
 
 ```java
@@ -197,6 +276,7 @@ public class UsuarioController {
 ```
 
 ### 2. Application Properties
+
 Archivo de configuración en `src/main/resources/application.properties`:
 
 ```properties
@@ -213,6 +293,7 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 ```
 
 ### 3. Profiles
+
 Diferentes configuraciones para diferentes entornos:
 
 ```properties
@@ -229,6 +310,7 @@ spring.jpa.hibernate.ddl-auto=validate
 ## Trabajar con Bases de Datos
 
 ### Configuración Básica
+
 ```xml
 <!-- En pom.xml -->
 <dependency>
@@ -243,6 +325,7 @@ spring.jpa.hibernate.ddl-auto=validate
 ```
 
 ### Crear una Entidad
+
 ```java
 package uy.bcu.miprimeraapp.model;
 
@@ -274,6 +357,7 @@ public class Usuario {
 ```
 
 ### Crear un Repository
+
 ```java
 package uy.bcu.miprimeraapp.repository;
 
@@ -288,6 +372,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 ```
 
 ### Crear un Service
+
 ```java
 package uy.bcu.miprimeraapp.service;
 
@@ -325,6 +410,7 @@ public class UsuarioService {
 - **Spring Boot Test**: Utilidades específicas para testing de aplicaciones Spring
 
 ### Dependencias en pom.xml
+
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -336,6 +422,7 @@ public class UsuarioService {
 Esta dependencia incluye automáticamente JUnit 5, Mockito, AssertJ y otras herramientas de testing.
 
 ### Test Unitario Básico
+
 ```java
 package uy.bcu.miprimeraapp;
 
@@ -353,6 +440,7 @@ class MiPrimeraAppApplicationTests {
 ```
 
 ### Test Unitario con Mockito
+
 ```java
 package uy.bcu.miprimeraapp.service;
 
@@ -391,6 +479,7 @@ public class UsuarioServiceTest {
 ```
 
 ### Test de Controller con MockMvc
+
 ```java
 package uy.bcu.miprimeraapp.controller;
 
@@ -435,6 +524,7 @@ public class HolaMundoControllerTest {
 ```
 
 ### Test de Integración con Testcontainers
+
 ```java
 package uy.bcu.miprimeraapp;
 
@@ -473,7 +563,9 @@ public class IntegrationTest {
 ## Debugging y Desarrollo
 
 ### Spring Boot DevTools
+
 Agrega esta dependencia para desarrollo:
+
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -484,11 +576,13 @@ Agrega esta dependencia para desarrollo:
 ```
 
 **Beneficios:**
+
 - Reinicio automático al cambiar código
 - Live reload en el navegador
 - Configuración automática para desarrollo
 
 ### Logs y Debugging
+
 ```java
 package uy.bcu.miprimeraapp.controller;
 
@@ -517,6 +611,7 @@ public class DebugController {
 ## Errores Comunes y Soluciones
 
 ### 1. Puerto ya en uso
+
 ```bash
 # Ver qué proceso usa el puerto 8080
 lsof -i :8080
@@ -529,6 +624,7 @@ server.port=8081
 ```
 
 ### 2. Error de compilación
+
 ```bash
 # Limpiar y recompilar
 mvn clean compile
@@ -538,6 +634,7 @@ mvn dependency:resolve
 ```
 
 ### 3. Base de datos no conecta
+
 ```properties
 # Verificar configuración en application.properties
 spring.datasource.url=jdbc:h2:mem:testdb
@@ -548,6 +645,7 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 ## Próximos Pasos
 
 ### Nivel Intermedio
+
 1. **Spring Security**: Autenticación y autorización
 2. **Spring Data JPA**: Consultas avanzadas
 3. **Spring MVC**: Controladores más complejos
@@ -555,6 +653,7 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 5. **Excepciones**: Manejo global de errores
 
 ### Nivel Avanzado
+
 1. **Spring Cloud**: Microservicios
 2. **Spring Batch**: Procesamiento por lotes
 3. **Spring Integration**: Integración de sistemas
@@ -563,20 +662,24 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 ## Recursos de Aprendizaje
 
 ### Documentación Oficial
+
 - [Spring Boot Documentation](https://spring.io/projects/spring-boot)
 - [Spring Guides](https://spring.io/guides)
 - [Baeldung Spring Tutorials](https://www.baeldung.com/spring-boot)
 
 ### Cursos
+
 - "Spring Boot Tutorial for Beginners" (YouTube)
 - "Master Spring Boot" (Udemy)
 - "Spring Framework Fundamentals" (Pluralsight)
 
 ### Libros
+
 - "Spring Boot in Action" - Craig Walls
 - "Pro Spring Boot 2" - Felipe Gutierrez
 
 ### Comunidad
+
 - [Stack Overflow - Spring Boot](https://stackoverflow.com/questions/tagged/spring-boot)
 - [Reddit - Java](https://www.reddit.com/r/java/)
 - [Spring Forum](https://spring.io/community)

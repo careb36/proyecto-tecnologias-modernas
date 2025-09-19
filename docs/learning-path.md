@@ -5,12 +5,14 @@ Esta guía está diseñada para llevarte desde **principiante absoluto** hasta *
 ## 📚 Metodología de Aprendizaje
 
 ### 🎯 **Enfoque Práctico**
+
 - **Aprende haciendo** - Cada concepto incluye ejemplos prácticos
 - **Progreso gradual** - De lo simple a lo complejo
 - **Proyecto real** - Todo se aplica a este mismo proyecto
 - **Mejores prácticas** - Implementadas desde el inicio
 
 ### 📊 **Niveles de Aprendizaje**
+
 - **🚀 Principiante** (4-6 semanas) - Fundamentos básicos
 - **⚡ Intermedio** (6-8 semanas) - Arquitecturas distribuidas
 - **🎯 Avanzado** (8-12 semanas) - DevOps y producción
@@ -23,39 +25,121 @@ Esta guía está diseñada para llevarte desde **principiante absoluto** hasta *
 **🎯 Objetivo**: Tener tu entorno listo para el desarrollo moderno
 
 ### Día 1-2: Java y Spring Boot
+
 **Meta**: Ejecutar una aplicación Spring Boot en tu máquina
 
 #### 📖 **Teoría**
+
 - ¿Qué es Java y JVM?
 - Introducción a Spring Framework
 - Conceptos básicos de Spring Boot
 
 #### 🛠️ **Práctica**
-```bash
-# 1. Instalar Java 11+
+
+1) Instalar Java 11+
+
+- Windows (PowerShell)
+```powershell
+# Requiere Windows 10/11 con winget
+winget install --id EclipseAdoptium.Temurin.11.JDK -e --source winget
+
+# Configurar JAVA_HOME y PATH (persistente)
+setx JAVA_HOME "C:\Program Files\Eclipse Adoptium\jdk-11"
+setx PATH "%PATH%;%JAVA_HOME%\bin"
+
+# Verificar instalación
 java -version
+```
 
-# 2. Instalar Maven
+Alternativa (Windows con Chocolatey):
+```powershell
+choco install temurin11 -y
+java -version
+```
+
+- macOS (Homebrew)
+```bash
+brew install --cask temurin11
+echo 'export JAVA_HOME=$(/usr/libexec/java_home -v 11)' >> ~/.zshrc
+echo 'export PATH="$JAVA_HOME/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+# Verificar
+java -version
+```
+
+- Ubuntu/Debian
+```bash
+sudo apt update && sudo apt install -y openjdk-11-jdk
+echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64' >> ~/.bashrc
+echo 'export PATH="$JAVA_HOME/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# Verificar
+java -version
+```
+
+2) Instalar Maven
+
+- Windows (PowerShell)
+```powershell
+# Requiere winget
+winget install --id Apache.Maven -e --source winget
+
+# (Opcional) Configurar MAVEN_HOME si es necesario
+# Ajusta el path si difiere en tu máquina
+setx MAVEN_HOME "C:\Program Files\Apache\maven"
+setx PATH "%PATH%;%MAVEN_HOME%\bin"
+
+# Verificar
 mvn -version
+```
 
-# 3. Crear primera app Spring Boot
-# Sigue: https://spring.io/guides/gs/spring-boot/
+Alternativa (Windows con Chocolatey):
+```powershell
+choco install maven -y
+mvn -version
+```
+
+- macOS (Homebrew)
+```bash
+brew install maven
+mvn -version
+```
+
+- Ubuntu/Debian
+```bash
+sudo apt update && sudo apt install -y maven
+mvn -version
+```
+
+3) Crear primera app Spring Boot
+```bash
+# Guía oficial (paso a paso):
+# https://spring.io/guides/gs/spring-boot/
+
+# O usando Spring Initializr por web:
+# https://start.spring.io/
 ```
 
 #### 📚 **Recursos**
+
 - [Java para Principiantes](https://www.oracle.com/java/technologies/javase-downloads.html)
 - [Spring Boot Getting Started](https://spring.io/guides/gs/spring-boot/)
 - [Maven Documentation](https://maven.apache.org/guides/)
 
 ### Día 3-4: Docker Básico
+
 **Meta**: `docker run hello-world` funcionando
 
 #### 📖 **Teoría**
+
 - ¿Qué es la containerización?
 - Diferencia entre VM y contenedores
 - Comandos básicos de Docker
 
 #### 🛠️ **Práctica**
+
 ```bash
 # 1. Instalar Docker Desktop
 # Descarga: https://www.docker.com/products/docker-desktop
@@ -70,19 +154,23 @@ docker --version
 ```
 
 #### 📚 **Recursos**
+
 - [Docker para Principiantes](https://docker-curriculum.com/)
 - [Play with Docker](https://labs.play-with-docker.com/)
 - [Docker Documentation](https://docs.docker.com/get-started/)
 
 ### Día 5-7: Proyecto Completo
-**Meta**: Todo el stack funcionando en http://localhost:8080
+
+**Meta**: Todo el stack funcionando en <http://localhost:8080>
 
 #### 📖 **Teoría**
+
 - ¿Qué es un stack de aplicaciones?
 - Arquitectura de microservicios básica
 - Orquestación con Docker Compose
 
 #### 🛠️ **Práctica**
+
 ```bash
 # 1. Clonar el repositorio
 git clone <tu-repositorio>
@@ -99,9 +187,10 @@ docker-compose ps
 ```
 
 #### 📚 **Recursos**
+
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
-- [README del Proyecto](./README.md)
-- [Guía de Inicio Rápido](./README.md#inicio-rápido)
+- [README del Proyecto](../README.md)
+- [Guía de Inicio Rápido](../README.md#inicio-rápido)
 
 ---
 
@@ -111,9 +200,11 @@ docker-compose ps
 **🎯 Objetivo**: Entender cómo funciona una arquitectura de microservicios
 
 ### Semana 1: Microservicios
+
 **Meta**: Crear un nuevo endpoint en un servicio existente
 
 #### 📖 **Conceptos Teóricos**
+
 - **Principio de Responsabilidad Única** (Single Responsibility)
 - **Comunicación entre servicios** (REST, gRPC)
 - **Base de datos por servicio** (Database per Service)
@@ -122,6 +213,7 @@ docker-compose ps
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Explorar Servicios Existentes**
+
 ```bash
 # Ver todos los servicios ejecutándose
 docker-compose ps
@@ -134,6 +226,7 @@ docker-compose ps
 ```
 
 ##### **2. Entender la Comunicación**
+
 ```bash
 # Probar API Gateway
 curl http://localhost:8080/api/usuarios
@@ -146,6 +239,7 @@ docker-compose logs api-gateway
 ```
 
 ##### **3. Agregar Nuevo Endpoint**
+
 ```java
 // En UsuarioController.java
 @PostMapping("/buscar")
@@ -155,14 +249,17 @@ public ResponseEntity<List<UsuarioDTO>> buscarUsuarios(@RequestParam String nomb
 ```
 
 #### 📚 **Recursos**
-- [Microservicios con Spring Boot](docs/microservices.md)
-- [API Gateway Documentation](docs/swagger.md)
+
+- [Microservicios con Spring Boot](microservices.md)
+- [API Gateway Documentation](swagger.md)
 - [Spring Cloud Documentation](https://spring.io/projects/spring-cloud)
 
 ### Semana 2: APIs y Documentación
+
 **Meta**: Documentar completamente una nueva funcionalidad
 
 #### 📖 **Conceptos Teóricos**
+
 - **OpenAPI 3** y especificaciones REST
 - **Swagger UI** para documentación interactiva
 - **Versionado de APIs**
@@ -171,6 +268,7 @@ public ResponseEntity<List<UsuarioDTO>> buscarUsuarios(@RequestParam String nomb
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Explorar Documentación Existente**
+
 ```bash
 # Swagger UI principal
 # http://localhost:8080/swagger-ui.html
@@ -183,6 +281,7 @@ public ResponseEntity<List<UsuarioDTO>> buscarUsuarios(@RequestParam String nomb
 ```
 
 ##### **2. Agregar Documentación a Nuevo Endpoint**
+
 ```java
 @PostMapping("/buscar")
 @Operation(
@@ -202,14 +301,17 @@ public ResponseEntity<List<UsuarioDTO>> buscarUsuarios(
 ```
 
 #### 📚 **Recursos**
-- [Documentación de APIs](docs/swagger.md)
+
+- [Documentación de APIs](swagger.md)
 - [OpenAPI Specification](https://swagger.io/specification/)
 - [SpringDoc OpenAPI](https://springdoc.org/)
 
 ### Semana 3: Bases de Datos
+
 **Meta**: Agregar un nuevo campo a una entidad
 
 #### 📖 **Conceptos Teóricos**
+
 - **JPA/Hibernate** para mapeo objeto-relacional
 - **Migraciones de base de datos**
 - **Relaciones entre entidades**
@@ -218,6 +320,7 @@ public ResponseEntity<List<UsuarioDTO>> buscarUsuarios(
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Explorar Base de Datos**
+
 ```bash
 # Conectar a Oracle
 # Host: localhost
@@ -231,6 +334,7 @@ SELECT table_name FROM user_tables;
 ```
 
 ##### **2. Agregar Nuevo Campo**
+
 ```java
 // En Usuario.java
 @Column(name = "telefono")
@@ -246,6 +350,7 @@ private String telefono;
 ```
 
 ##### **3. Actualizar Controller**
+
 ```java
 @PostMapping
 public ResponseEntity<UsuarioDTO> crearUsuario(@Valid @RequestBody UsuarioCreateDTO dto) {
@@ -262,7 +367,8 @@ public ResponseEntity<UsuarioDTO> crearUsuario(@Valid @RequestBody UsuarioCreate
 ```
 
 #### 📚 **Recursos**
-- [Oracle Database Guide](docs/oracle.md)
+
+- [Oracle Database Guide](oracle.md)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
 - [JPA Documentation](https://jakarta.ee/specifications/persistence/3.0/)
 
@@ -274,9 +380,11 @@ public ResponseEntity<UsuarioDTO> crearUsuario(@Valid @RequestBody UsuarioCreate
 **🎯 Objetivo**: Dominar Docker y la gestión de contenedores
 
 ### Semana 1: Docker Avanzado
+
 **Meta**: Crear imagen Docker para tu propia aplicación
 
 #### 📖 **Conceptos Teóricos**
+
 - **Dockerfile** y mejores prácticas
 - **Capas de imagen** y optimización
 - **Multi-stage builds**
@@ -285,6 +393,7 @@ public ResponseEntity<UsuarioDTO> crearUsuario(@Valid @RequestBody UsuarioCreate
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Analizar Dockerfile Existente**
+
 ```dockerfile
 # Ejemplo del proyecto
 FROM openjdk:11-jre-slim
@@ -294,6 +403,7 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
 ##### **2. Crear Dockerfile Optimizado**
+
 ```dockerfile
 # Multi-stage build
 FROM maven:3.8.4-openjdk-11-slim AS build
@@ -310,6 +420,7 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
 ##### **3. Construir y Ejecutar**
+
 ```bash
 # Construir imagen
 docker build -t mi-servicio .
@@ -322,14 +433,17 @@ docker logs <container-id>
 ```
 
 #### 📚 **Recursos**
+
 - [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
 - [Multi-stage Builds](https://docs.docker.com/develop/buildx/multi-stage/)
 - [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
 
 ### Semana 2: Gestión y Orquestación
+
 **Meta**: Desplegar una aplicación completa en Swarm
 
 #### 📖 **Conceptos Teóricos**
+
 - **Docker Compose** para desarrollo
 - **Docker Swarm** para producción
 - **Load balancing** y escalado
@@ -338,6 +452,7 @@ docker logs <container-id>
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Usar Docker Compose (Desarrollo)**
+
 ```bash
 # Ver configuración actual
 cat docker-compose.yml
@@ -350,6 +465,7 @@ docker-compose ps
 ```
 
 ##### **2. Introducción a Docker Swarm**
+
 ```bash
 # Inicializar Swarm
 docker swarm init
@@ -365,6 +481,7 @@ docker service scale tech-stack_usuario-service=3
 ```
 
 ##### **3. Monitoreo con Portainer**
+
 ```bash
 # Portainer está incluido en el stack
 # URL: http://localhost:9001
@@ -377,8 +494,9 @@ docker service scale tech-stack_usuario-service=3
 ```
 
 #### 📚 **Recursos**
-- [Docker Swarm Documentation](docs/docker-swarm.md)
-- [Portainer Guide](docs/portainer.md)
+
+- [Docker Swarm Documentation](docker-swarm.md)
+- [Portainer Guide](portainer.md)
 - [Docker Compose Scaling](https://docs.docker.com/compose/scaling/)
 
 ---
@@ -389,9 +507,11 @@ docker service scale tech-stack_usuario-service=3
 **🎯 Objetivo**: Implementar monitoreo completo de aplicaciones
 
 ### Semana 1: Métricas y Dashboards
+
 **Meta**: Dashboard mostrando métricas de tu aplicación
 
 #### 📖 **Conceptos Teóricos**
+
 - **Métricas de aplicación** (JVM, HTTP, DB)
 - **Micrometer** para instrumentación
 - **Prometheus** para recolección
@@ -400,6 +520,7 @@ docker service scale tech-stack_usuario-service=3
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Explorar Métricas Existentes**
+
 ```bash
 # Prometheus
 # http://localhost:9090
@@ -413,6 +534,7 @@ curl http://localhost:8081/actuator/prometheus
 ```
 
 ##### **2. Crear Dashboard Personalizado**
+
 ```bash
 # En Grafana:
 # 1. Crear nuevo dashboard
@@ -422,6 +544,7 @@ curl http://localhost:8081/actuator/prometheus
 ```
 
 ##### **3. Métricas Personalizadas**
+
 ```java
 // En tu servicio
 @Autowired
@@ -440,14 +563,17 @@ public void procesarPedido() {
 ```
 
 #### 📚 **Recursos**
-- [Grafana Guide](docs/grafana.md)
+
+- [Grafana Guide](grafana.md)
 - [Prometheus Documentation](https://prometheus.io/docs/)
 - [Micrometer Documentation](https://micrometer.io/)
 
 ### Semana 2: Logs y Troubleshooting
+
 **Meta**: Encontrar y solucionar un problema usando logs
 
 #### 📖 **Conceptos Teóricos**
+
 - **Niveles de logging** (DEBUG, INFO, WARN, ERROR)
 - **Logging estructurado** con SLF4J
 - **Agregación centralizada** con Loki
@@ -456,6 +582,7 @@ public void procesarPedido() {
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Explorar Sistema de Logs**
+
 ```bash
 # Loki (agregador de logs)
 # http://localhost:3100
@@ -468,6 +595,7 @@ docker-compose logs usuario-service
 ```
 
 ##### **2. Implementar Logging Estructurado**
+
 ```java
 // En tu código
 private static final Logger logger = LoggerFactory.getLogger(MiClase.class);
@@ -488,6 +616,7 @@ public void procesarUsuario(Long usuarioId) {
 ```
 
 ##### **3. Troubleshooting con Logs**
+
 ```bash
 # Buscar errores en logs
 docker-compose logs | grep ERROR
@@ -500,7 +629,8 @@ docker-compose logs -f usuario-service
 ```
 
 #### 📚 **Recursos**
-- [Loki Guide](docs/loki.md)
+
+- [Loki Guide](loki.md)
 - [SLF4J Documentation](https://www.slf4j.org/)
 - [Logback Configuration](https://logback.qos.ch/manual/)
 
@@ -512,9 +642,11 @@ docker-compose logs -f usuario-service
 **🎯 Objetivo**: Automatizar el desarrollo y asegurar calidad
 
 ### Semana 1: Pipelines CI/CD
+
 **Meta**: Pipeline que se ejecuta en cada commit
 
 #### 📖 **Conceptos Teóricos**
+
 - **Integración Continua** (CI)
 - **Despliegue Continuo** (CD)
 - **GitLab CI/CD** con pipelines
@@ -523,6 +655,7 @@ docker-compose logs -f usuario-service
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Explorar Pipeline Existente**
+
 ```yaml
 # .gitlab-ci.yml
 stages:
@@ -549,6 +682,7 @@ deploy:
 ```
 
 ##### **2. Ejecutar Pipeline Local**
+
 ```bash
 # Instalar GitLab Runner local
 # O usar docker para testing
@@ -560,6 +694,7 @@ mvn sonar:sonar
 ```
 
 ##### **3. Agregar Nuevos Stages**
+
 ```yaml
 # Agregar stage de performance
 performance:
@@ -575,14 +710,17 @@ security:
 ```
 
 #### 📚 **Recursos**
-- [GitLab CI/CD Guide](docs/gitlab-ci.md)
+
+- [GitLab CI/CD Guide](gitlab-ci.md)
 - [GitLab CI/CD Documentation](https://docs.gitlab.com/ee/ci/)
 - [Maven Plugins](https://maven.apache.org/plugins/)
 
 ### Semana 2: Calidad y Performance
+
 **Meta**: Quality gate funcionando y pruebas de carga documentadas
 
 #### 📖 **Conceptos Teóricos**
+
 - **Análisis estático** con SonarQube
 - **Cobertura de código** con JaCoCo
 - **Pruebas de carga** con JMeter
@@ -591,6 +729,7 @@ security:
 #### 🛠️ **Práctica con el Proyecto**
 
 ##### **1. Explorar SonarQube**
+
 ```bash
 # SonarQube (admin/admin)
 # http://localhost:9000
@@ -603,6 +742,7 @@ security:
 ```
 
 ##### **2. Ejecutar Análisis Local**
+
 ```bash
 # Análisis con SonarQube
 mvn clean verify sonar:sonar \
@@ -612,6 +752,7 @@ mvn clean verify sonar:sonar \
 ```
 
 ##### **3. Pruebas de Carga con JMeter**
+
 ```bash
 # JMeter incluido en el proyecto
 # Crear plan de pruebas:
@@ -625,8 +766,9 @@ jmeter -n -t test-plan.jmx -l results.jtl
 ```
 
 #### 📚 **Recursos**
-- [SonarQube Guide](docs/sonarqube.md)
-- [JMeter Guide](docs/jmeter.md)
+
+- [SonarQube Guide](sonarqube.md)
+- [JMeter Guide](jmeter.md)
 - [JaCoCo Documentation](https://www.jacoco.org/jacoco/)
 
 ---
@@ -637,9 +779,11 @@ jmeter -n -t test-plan.jmx -l results.jtl
 **🎯 Objetivo**: Aplicar todo lo aprendido en un proyecto real
 
 ### Planificación
+
 **Meta**: Diseña tu propio microservicio
 
 #### 📋 **Checklist de Planificación**
+
 - [ ] **Definir dominio** - ¿Qué problema resuelve?
 - [ ] **Identificar bounded contexts** - Límites del servicio
 - [ ] **Diseñar API** - Endpoints REST
@@ -647,6 +791,7 @@ jmeter -n -t test-plan.jmx -l results.jtl
 - [ ] **Definir contratos** - DTOs y validaciones
 
 #### 🛠️ **Herramientas para Diseño**
+
 ```bash
 # Crear diagrama de arquitectura
 # Usar: draw.io, plantuml, structurizr
@@ -659,9 +804,11 @@ jmeter -n -t test-plan.jmx -l results.jtl
 ```
 
 ### Desarrollo
+
 **Meta**: Implementa usando las mejores prácticas
 
 #### 📋 **Checklist de Desarrollo**
+
 - [ ] **Configurar proyecto** - Maven, Spring Boot
 - [ ] **Implementar entidades** - JPA con validaciones
 - [ ] **Crear repositorios** - Spring Data JPA
@@ -672,6 +819,7 @@ jmeter -n -t test-plan.jmx -l results.jtl
 - [ ] **Implementar logging** - SLF4J estructurado
 
 #### 🛠️ **Estructura Recomendada**
+
 ```
 mi-servicio/
 ├── Dockerfile
@@ -691,9 +839,11 @@ mi-servicio/
 ```
 
 ### Testing
+
 **Meta**: Pruebas unitarias, integración y carga
 
 #### 📋 **Estrategia de Testing**
+
 - **Unit Tests**: 70-80% cobertura
 - **Integration Tests**: Con Testcontainers
 - **API Tests**: Con REST Assured
@@ -701,6 +851,7 @@ mi-servicio/
 - **E2E Tests**: Con Selenium/Cypress
 
 #### 🛠️ **Ejemplo de Test**
+
 ```java
 @SpringBootTest
 @Testcontainers
@@ -725,9 +876,11 @@ class MiServicioIntegrationTest {
 ```
 
 ### Despliegue
+
 **Meta**: CI/CD completo con monitoreo
 
 #### 📋 **Pipeline Completo**
+
 ```yaml
 stages:
   - build
@@ -742,6 +895,7 @@ stages:
 ```
 
 #### 🛠️ **Despliegue en Producción**
+
 ```bash
 # Usar Docker Swarm
 docker stack deploy -c docker-compose.prod.yml mi-stack
@@ -758,9 +912,11 @@ docker stack deploy -c docker-compose.prod.yml mi-stack
 ```
 
 ### Documentación
+
 **Meta**: APIs, arquitectura y guías de uso
 
 #### 📋 **Documentación Requerida**
+
 - [ ] **README.md** - Guía de instalación y uso
 - [ ] **API Documentation** - Swagger/OpenAPI completa
 - [ ] **Architecture Diagrams** - Diagramas de componentes
@@ -773,16 +929,19 @@ docker stack deploy -c docker-compose.prod.yml mi-stack
 ## 🏆 Certificaciones Recomendadas
 
 ### 🚀 Nivel Básico
+
 - **Oracle Certified Java Programmer (OCJP)**
   - [📚 Preparación](https://education.oracle.com/oracle-certified-professional-java-se-11-programmer/trackp_OCPJSE11)
 
 ### ⚡ Nivel Intermedio
+
 - **Docker Certified Associate (DCA)**
   - [🎓 Certificación](https://docker.com/certification)
 - **Spring Professional Certification**
   - [🎓 Pivotal Certification](https://pivotal.io/training)
 
 ### 🎯 Nivel Avanzado
+
 - **Certified Kubernetes Administrator (CKA)**
   - [🎓 CNCF Certification](https://www.cncf.io/certification/cka/)
 - **AWS Certified DevOps Engineer**
@@ -793,17 +952,20 @@ docker stack deploy -c docker-compose.prod.yml mi-stack
 ## 📚 Recursos Adicionales
 
 ### Comunidades y Blogs
-- **Spring Blog**: https://spring.io/blog
-- **Baeldung**: https://www.baeldung.com/
+
+- **Spring Blog**: <https://spring.io/blog>
+- **Baeldung**: <https://www.baeldung.com/>
 - **Reddit**: r/java, r/microservices, r/docker
 - **Stack Overflow**: Etiquetas específicas
 
 ### Cursos Especializados
+
 - **Udemy**: "Master Microservices with Spring Boot and Spring Cloud"
 - **Coursera**: "Microservices Architecture" (University of Alberta)
 - **LinkedIn Learning**: "Building Microservices with Spring Boot"
 
 ### Libros Avanzados
+
 - **"Domain-Driven Design"** - Eric Evans
 - **"Clean Architecture"** - Robert C. Martin
 - **"Building Evolutionary Architectures"** - Neal Ford
@@ -815,6 +977,7 @@ docker stack deploy -c docker-compose.prod.yml mi-stack
 Esta guía te ha llevado desde los fundamentos hasta la implementación de sistemas complejos. El conocimiento adquirido aquí es aplicable a cualquier proyecto moderno de software.
 
 **¿Qué sigue?**
+
 - Contribuye a proyectos open source
 - Únete a comunidades técnicas
 - Considera certificaciones avanzadas

@@ -9,14 +9,18 @@
 Este README está estructurado en **dos secciones principales** para maximizar tu experiencia de aprendizaje:
 
 ### 🎯 **Sección 1: Sobre el Proyecto** (Páginas 1-4)
+
 **Para entender QUÉ incluye este proyecto**
+
 - Arquitectura técnica completa
 - Tecnologías implementadas
 - Cómo ejecutar y usar el sistema
 - Servicios disponibles y URLs de acceso
 
 ### 📚 **Sección 2: Ruta de Aprendizaje** (Página 5+)
+
 **Para aprender CÓMO usar estas tecnologías**
+
 - Guía paso a paso desde principiante
 - Ejemplos prácticos y código
 - Recursos de aprendizaje
@@ -41,12 +45,14 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 ### 👥 **¿Para quién está diseñado?**
 
 **Perfecto para ti si eres:**
+
 - **Desarrollador tradicional** buscando modernizarse
 - **Estudiante** aprendiendo desarrollo web moderno
 - **Profesional** necesitando actualizar sus habilidades
 - **Equipo técnico** buscando mejores prácticas
 
 **Si vienes de:**
+
 - Programación monolítica (Java puro, .NET, PHP)
 - Despliegue manual por FTP
 - Sin experiencia en contenedores
@@ -57,6 +63,7 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 ### 🎯 **¿Qué aprenderás?**
 
 #### **Nivel Básico** (Semanas 1-4)
+
 - ✅ Java moderno con Spring Boot
 - ✅ APIs REST y servicios web
 - ✅ Bases de datos con JPA/Hibernate
@@ -64,6 +71,7 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 - ✅ Primeros pasos con Docker
 
 #### **Nivel Intermedio** (Semanas 5-8)
+
 - ✅ Arquitectura de microservicios
 - ✅ Containerización completa
 - ✅ Orquestación con Docker Swarm
@@ -71,6 +79,7 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 - ✅ Monitoreo básico
 
 #### **Nivel Avanzado** (Semanas 9-12)
+
 - ✅ CI/CD con pipelines
 - ✅ Observabilidad completa
 - ✅ Calidad de código con SonarQube
@@ -80,6 +89,7 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 ## 🛠️ **Stack Tecnológico Completo**
 
 ### ☕ **Backend & APIs**
+
 - **Java 11+** con Spring Boot 2.7
 - **Spring Cloud** - Arquitectura de microservicios completa
 - **Spring Cloud Gateway** - API Gateway inteligente
@@ -89,18 +99,21 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 - **OpenAPI 3 / Swagger** - Documentación de APIs
 
 ### 🗄️ **Bases de Datos**
+
 - **Oracle Database** - Base de datos relacional empresarial
 - **PostgreSQL** - Base de datos para herramientas
 - **H2 Database** - Base de datos en memoria para testing
 - **Testcontainers** - Contenedores de BD para pruebas
 
 ### 🐳 **Containerización & Orquestación**
+
 - **Docker** - Containerización de aplicaciones
 - **Docker Compose** - Orquestación local
 - **Docker Swarm** - Orquestación distribuida
 - **Portainer** - Gestión visual de contenedores
 
 ### 📊 **Monitoreo & Observabilidad**
+
 - **Grafana** - Dashboards y visualización
 - **Prometheus** - Recolección de métricas
 - **Loki** - Agregación centralizada de logs
@@ -109,6 +122,7 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 - **Spring Boot Actuator** - Health checks
 
 ### 🔍 **Calidad & Testing**
+
 - **SonarQube** - Análisis de calidad de código
 - **JaCoCo** - Cobertura de pruebas
 - **JUnit 5** - Framework de testing moderno
@@ -117,6 +131,7 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 - **Maven** - Gestión de dependencias
 
 ### 🔄 **CI/CD & DevOps**
+
 - **GitLab CI/CD** - Pipelines automatizados
 - **Git** - Control de versiones
 - **Infrastructure as Code** - Docker Compose
@@ -124,6 +139,7 @@ Este proyecto es una **implementación completa y profesional** de arquitectura 
 - **Multi-entorno** - Dev, staging, producción
 
 ### 🧪 **Herramientas de Desarrollo**
+
 - **IntelliJ IDEA / VS Code** - IDEs recomendados
 - **Postman** - Testing de APIs
 - **Git Bash / Terminal** - Línea de comandos
@@ -139,22 +155,26 @@ Este proyecto implementa una **arquitectura de microservicios empresarial** sigu
 ### 🏛️ **Componentes Principales**
 
 #### **🏠 Infraestructura Core**
+
 - **API Gateway** - Punto de entrada único con routing inteligente
 - **Config Server** - Configuración centralizada de todos los servicios
 - **Service Registry** - Service Discovery automático con Eureka
 
 #### **🎯 Microservicios de Negocio**
+
 - **👥 Usuario Service** - Gestión completa de usuarios y autenticación
 - **📦 Product Service** - Catálogo de productos e inventario
 - **📋 Order Service** - Procesamiento de pedidos y transacciones
 - **📢 Notification Service** - Sistema de notificaciones multi-canal
 
 #### **📊 Stack de Observabilidad**
+
 - **Grafana** - Dashboards y visualización de métricas
 - **Prometheus** - Recolección y almacenamiento de métricas
 - **Loki** - Agregación centralizada de logs
 
 #### **🔍 Calidad y DevOps**
+
 - **SonarQube** - Análisis de calidad de código
 - **Portainer** - Gestión visual de contenedores
 
@@ -178,6 +198,7 @@ Cada servicio de microservicio es un proyecto independiente basado en Maven, con
 ### ✅ **Características Técnicas**
 
 Cada servicio incluye:
+
 - **Proyecto Maven independiente** con `pom.xml`
 - **Dockerfile** para containerización
 - **Configuración Spring Boot** completa
@@ -190,30 +211,35 @@ Cada servicio incluye:
 Este proyecto implementa un **sistema completo de e-commerce** donde todas las tecnologías trabajan juntas para proporcionar una experiencia de desarrollo y operación empresarial moderna:
 
 #### **🏪 Flujo de Negocio**
+
 1. **👥 Gestión de Usuarios**: El servicio de usuarios permite registrar y autenticar clientes
 2. **📦 Catálogo de Productos**: Los productos se gestionan con inventario y precios
 3. **📋 Procesamiento de Pedidos**: Los usuarios pueden crear pedidos que combinan productos del catálogo
 4. **📢 Notificaciones**: El sistema envía confirmaciones y actualizaciones de pedidos
 
 #### **⚙️ Infraestructura Técnica**
+
 - **API Gateway** actúa como punto de entrada único, enrutando las requests a los microservicios apropiados
 - **Config Server** centraliza la configuración de todos los servicios, permitiendo cambios sin reinicios
 - **Service Registry** mantiene un directorio dinámico de servicios para comunicación automática
 - **Oracle Database** almacena todos los datos de negocio de forma persistente y escalable
 
 #### **📊 Observabilidad Completa**
+
 - **Prometheus** recolecta métricas de rendimiento de todas las aplicaciones
 - **Grafana** visualiza estas métricas en dashboards personalizables
 - **Loki** centraliza logs de todos los contenedores para troubleshooting
 - **Spring Boot Actuator** proporciona health checks y métricas de aplicación
 
 #### **🔍 Calidad y DevOps**
+
 - **SonarQube** analiza la calidad del código y previene deuda técnica
 - **Portainer** permite gestión visual de contenedores Docker
 - **GitLab CI/CD** automatiza testing, building y despliegue
 - **Docker Compose/Swarm** orquesta el despliegue completo del sistema
 
 #### **🎯 Casos de Uso Prácticos**
+
 - **Desarrollo Local**: Ejecutar todo el stack con un solo comando
 - **Testing de Integración**: Verificar que todos los servicios funcionen juntos
 - **Monitoreo en Tiempo Real**: Observar métricas de performance y salud del sistema
@@ -237,32 +263,52 @@ docker-compose ps
 docker-compose logs -f
 ```
 
+### 🧪 **Pruebas Rápidas**
+
+```bash
+# Ejecutar tests unitarios en un microservicio (JUnit 5 + Mockito)
+cd usuario-service && mvn test
+
+# Ejecutar tests en todos los microservicios (uno por vez)
+# Ejecutar dentro de cada carpeta: api-gateway, config-server, service-registry, usuario-service, product-service, order-service, notification-service
+mvn test
+
+# Generar reporte de cobertura (JaCoCo) al ejecutar verify
+mvn clean verify
+# Reporte: target/site/jacoco/index.html
+```
+
 ### 🌐 **URLs de Acceso**
 
 #### **🏗️ Arquitectura Principal**
-- **API Gateway**: http://localhost:8080
-- **Config Server**: http://localhost:8888
-- **Service Registry**: http://localhost:8761
+
+- **API Gateway**: <http://localhost:8080>
+- **Config Server**: <http://localhost:8888>
+- **Service Registry**: <http://localhost:8761>
 
 #### **🎯 Servicios de Negocio**
-- **Usuario Service**: http://localhost:8081
-- **Product Service**: http://localhost:8082
-- **Order Service**: http://localhost:8083
-- **Notification Service**: http://localhost:8084
+
+- **Usuario Service**: <http://localhost:8081>
+- **Product Service**: <http://localhost:8082>
+- **Order Service**: <http://localhost:8083>
+- **Notification Service**: <http://localhost:8084>
 
 #### **📊 Monitoreo**
-- **Grafana**: http://localhost:3000 (`admin`/`admin`)
-- **Prometheus**: http://localhost:9090
-- **SonarQube**: http://localhost:9000 (`admin`/`admin`)
-- **Portainer**: http://localhost:9001 (`admin` / configurar contraseña en primer acceso)
-- **Loki**: http://localhost:3100
+
+- **Grafana**: <http://localhost:3000> (`admin`/`admin`)
+- **Prometheus**: <http://localhost:9090>
+- **SonarQube**: <http://localhost:9000> (`admin`/`admin`)
+- **Portainer**: <http://localhost:9001> (`admin` / configurar contraseña en primer acceso)
+- **Loki**: <http://localhost:3100>
 
 #### **🗄️ Bases de Datos**
-- **Oracle Database Web**: http://localhost:5500 (`system`/`oracle`)
+
+- **Oracle Database Web**: <http://localhost:5500> (`system`/`oracle`)
 - **PostgreSQL**: No expuesto directamente (usado por SonarQube)
 
 ### 📋 **Documentación**
-- **Swagger UI**: http://localhost:8080/swagger-ui.html
+
+- **Swagger UI**: <http://localhost:8080/swagger-ui.html>
 - **Documentación Técnica**: `./docs/`
 
 ---
@@ -296,18 +342,21 @@ Esta guía te lleva desde **"nunca he usado Docker"** hasta **"despliegue en pro
 ### 🎓 **¿Por dónde empezar?**
 
 #### **🚀 Si eres COMPLETAMENTE principiante:**
+
 1. Lee la [Fase 0: Preparación](docs/learning-path.md#fase-0-preparación)
 2. Instala Docker y Java
 3. Ejecuta `docker-compose up -d`
 4. Explora las APIs con Swagger
 
 #### **⚡ Si tienes experiencia básica:**
+
 1. Ve directo a la [Fase 1: Arquitectura](docs/learning-path.md#fase-1-arquitectura-y-servicios)
 2. Aprende sobre microservicios
 3. Modifica un servicio existente
 4. Implementa nuevas funcionalidades
 
 #### **🎯 Si eres avanzado:**
+
 1. Revisa la [Fase 5: Proyecto Final](docs/learning-path.md#fase-5-proyecto-final)
 2. Estudia los pipelines CI/CD
 3. Aprende sobre observabilidad
@@ -323,8 +372,8 @@ Esta guía te lleva desde **"nunca he usado Docker"** hasta **"despliegue en pro
 | **🚀 Inicio Rápido** | Cómo ejecutar el proyecto | [Ver arriba](#inicio-rápido) |
 | **📚 Aprendizaje** | Guía paso a paso de aprendizaje | [docs/learning-path.md](docs/learning-path.md) |
 | **📖 Documentación** | Guías técnicas detalladas | [./docs/](./docs/) |
-| **🧪 APIs** | Documentación interactiva | http://localhost:8080/swagger-ui.html |
-| **📊 Monitoreo** | Dashboards y métricas | http://localhost:3000 |
+| **🧪 APIs** | Documentación interactiva | <http://localhost:8080/swagger-ui.html> |
+| **📊 Monitoreo** | Dashboards y métricas | <http://localhost:3000> |
 
 ---
 
@@ -337,14 +386,14 @@ Esta guía te lleva desde **"nunca he usado Docker"** hasta **"despliegue en pro
 
 **¡Tu viaje hacia el desarrollo moderno comienza aquí!** 🚀✨
 
-
-
 ## 📚 **Recursos de Aprendizaje**
 
 ### 🎓 **Guía de Aprendizaje Completa**
+
 **[📚 Ver Guía de Aprendizaje Paso a Paso](docs/learning-path.md)**
 
 Esta guía te lleva desde **"nunca he usado Docker"** hasta **"despliegue en producción"** con:
+
 - **5 fases de aprendizaje** progresivas
 - **Ejemplos prácticos** con este mismo proyecto
 - **Código real** que puedes ejecutar
@@ -352,7 +401,9 @@ Esta guía te lleva desde **"nunca he usado Docker"** hasta **"despliegue en pro
 - **Certificaciones recomendadas**
 
 ### 📖 **Documentación Técnica**
+
 Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
+
 - [☕ Java con Spring Boot](docs/java-spring.md)
 - [🏗️ Arquitectura de Microservicios](docs/microservices.md)
 - [🐳 Docker y Containerización](docs/docker.md)
@@ -369,6 +420,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
 ¡Las contribuciones son bienvenidas! Este proyecto está diseñado para el aprendizaje colaborativo.
 
 ### Cómo Contribuir
+
 1. **Fork** del proyecto
 2. Crear rama feature (`git checkout -b feature/nueva-funcionalidad`)
 3. **Commit** cambios (`git commit -m 'Agrega nueva funcionalidad'`)
@@ -376,6 +428,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
 5. Abrir **Pull Request** con descripción detallada
 
 ### Guías de Contribución
+
 - Seguir los estándares de código existentes
 - Agregar tests para nuevas funcionalidades
 - Actualizar documentación cuando corresponda
@@ -393,6 +446,7 @@ Este proyecto está bajo la **Licencia MIT** - ver el archivo [LICENSE](LICENSE)
 **¡Feliz aprendizaje! 🎓**
 
 ### **Documentación Técnica por Tecnología**
+
 Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
 
 - [☕ Java con Spring Boot](docs/java-spring.md) - Fundamentos de Spring Boot
@@ -411,6 +465,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
 ### Materiales de Referencia y Teoría
 
 #### Arquitectura de Microservicios
+
 - **"Building Microservices"** - Sam Newman
   - [📚 Libro en Amazon](https://www.amazon.com/Building-Microservices-Designing-Fine-Grained-Systems/dp/1491950358)
   - [🌐 Versión Digital](https://www.oreilly.com/library/view/building-microservices/9781491950340/)
@@ -422,6 +477,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
   - [🎓 Spring Cloud Guides](https://spring.io/guides)
 
 #### Docker y Containerización
+
 - **Docker Documentation**
   - [📚 Docker Docs](https://docs.docker.com/)
   - [🎓 Docker Labs](https://labs.play-with-docker.com/)
@@ -432,6 +488,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
   - [🎛️ Portainer](https://docs.portainer.io/)
 
 #### DevOps y CI/CD
+
 - **GitLab CI/CD**
   - [📖 Documentación](https://docs.gitlab.com/ee/ci/)
   - [🎯 GitLab Learning](https://about.gitlab.com/learn/)
@@ -441,6 +498,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
   - [📋 12factor.net](https://12factor.net/)
 
 #### Observabilidad
+
 - **Grafana University**
   - [🎓 Cursos Gratuitos](https://university.grafana.com/)
   - [📊 Dashboard Examples](https://grafana.com/grafana/dashboards/)
@@ -451,6 +509,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
   - [📚 Libro](https://www.oreilly.com/library/view/observability-engineering/9781492076438/)
 
 #### Calidad de Código
+
 - **SonarQube Documentation**
   - [📖 SonarQube Docs](https://docs.sonarsource.com/sonarqube/)
   - [🎯 SonarQube Academy](https://academy.sonarsource.com/)
@@ -462,6 +521,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
 ### Rutas de Aprendizaje Recomendadas
 
 #### Nivel Principiante
+
 **Si nunca has usado estas tecnologías, comienza aquí:**
 
 1. **Java y Spring Boot**
@@ -485,6 +545,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
    - Practica con consultas y relaciones
 
 #### Nivel Intermedio
+
 **Una vez que dominas lo básico:**
 
 1. **Arquitectura de Microservicios**
@@ -508,6 +569,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
    - Visualiza métricas de aplicación
 
 #### Nivel Avanzado
+
 **Para dominar el desarrollo moderno:**
 
 1. **CI/CD con GitLab**
@@ -544,18 +606,20 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
 ## Configuración del Entorno
 
 ### Prerrequisitos
+
 - Docker y Docker Compose
 - Java 11+
 - Git
 - Maven
 
 ### Variables de Entorno
-Copia el archivo `.env.example` a `.env` y ajusta las variables según tu entorno.
 
+Copia el archivo `.env.example` a `.env` y ajusta las variables según tu entorno.
 
 ## Despliegue
 
 ### **Desarrollo Local**
+
 ```bash
 # Ejecutar desde la raíz del proyecto (directorio Proyecto_Tecnologias)
 # Stack completo para desarrollo
@@ -569,6 +633,7 @@ docker-compose ps
 ```
 
 ### **Producción con Docker Swarm**
+
 ```bash
 # Ejecutar desde la raíz del proyecto (directorio Proyecto_Tecnologias)
 # Requiere Docker Swarm inicializado (docker swarm init)
@@ -580,6 +645,7 @@ docker stack services tech-stack
 ```
 
 ### **Despliegue por Componentes**
+
 ```bash
 # Solo arquitectura principal
 docker-compose up api-gateway config-server service-registry
@@ -595,6 +661,7 @@ docker-compose up oracle postgres
 ```
 
 ### **Monitoreo del Despliegue**
+
 ```bash
 # Ver estado de todos los contenedores
 docker-compose ps
@@ -607,11 +674,12 @@ docker-compose logs grafana
 docker stats
 
 # Health checks
-curl http://localhost:8080/health
+curl http://localhost:8080/actuator/health
 curl http://localhost:8081/actuator/health
 ```
 
 ### **Gestión y Limpieza de Contenedores**
+
 ```bash
 # Detener todos los servicios
 docker-compose down
@@ -638,10 +706,10 @@ docker-compose up -d
 docker-compose ps
 ```
 
-
 ## Mejores Prácticas Implementadas
 
 ### Arquitectura
+
 - ✅ **Separación de responsabilidades** por microservicio
 - ✅ **API Gateway** para enrutamiento centralizado
 - ✅ **Service Discovery** automático
@@ -649,6 +717,7 @@ docker-compose ps
 - ✅ **Documentación OpenAPI** completa
 
 ### Desarrollo
+
 - ✅ **Principio SOLID** en el diseño de clases
 - ✅ **Inyección de dependencias** con Spring
 - ✅ **Validaciones** automáticas con Bean Validation
@@ -656,12 +725,14 @@ docker-compose ps
 - ✅ **Logging estructurado** con SLF4J
 
 ### Testing
+
 - ✅ **Tests unitarios** con JUnit 5 y Mockito
 - ✅ **Tests de integración** con Testcontainers
 - ✅ **Cobertura de código** con JaCoCo
 - ✅ **Quality Gates** con SonarQube
 
 ### DevOps
+
 - ✅ **Containerización** completa con Docker
 - ✅ **CI/CD** automatizado con GitLab
 - ✅ **Multi-entorno** (dev, staging, prod)
@@ -669,6 +740,7 @@ docker-compose ps
 - ✅ **Orquestación** con Docker Swarm
 
 ### Observabilidad
+
 - ✅ **Métricas** con Micrometer/Prometheus
 - ✅ **Logs centralizados** con Loki
 - ✅ **Dashboards** con Grafana
@@ -678,6 +750,7 @@ docker-compose ps
 ## Próximos Pasos y Mejoras
 
 ### Funcionalidades Pendientes
+
 - [ ] Implementar autenticación OAuth2/JWT
 - [ ] Agregar cache con Redis
 - [ ] Implementar mensajería con RabbitMQ/Kafka
@@ -688,6 +761,7 @@ docker-compose ps
 - [ ] Implementar circuit breakers con Resilience4j
 
 ### Mejoras Técnicas
+
 - [ ] Agregar tests de performance con JMeter
 - [ ] Implementar feature flags
 - [ ] Configurar canary deployments
@@ -702,6 +776,7 @@ docker-compose ps
 ¡Las contribuciones son bienvenidas! Este proyecto está diseñado para el aprendizaje colaborativo.
 
 ### Cómo Contribuir
+
 1. **Fork** del proyecto
 2. Crear rama feature (`git checkout -b feature/nueva-funcionalidad`)
 3. **Commit** cambios (`git commit -m 'Agrega nueva funcionalidad'`)
@@ -709,6 +784,7 @@ docker-compose ps
 5. Abrir **Pull Request** con descripción detallada
 
 ### Guías de Contribución
+
 - Seguir los estándares de código existentes
 - Agregar tests para nuevas funcionalidades
 - Actualizar documentación cuando corresponda
@@ -721,8 +797,8 @@ Este proyecto está bajo la **Licencia MIT** - ver el archivo [LICENSE](LICENSE)
 
 ---
 
-
 ### **Listo para usar**
+
 ```bash
 # Levantar todos los servicios del sistema (microservicios, base de datos, monitoreo, etc.)
 docker-compose up -d
@@ -732,6 +808,5 @@ docker-compose up -d
 # - Monitoreo: http://localhost:3000
 # - Documentación: http://localhost:8080/swagger-ui.html
 ```
-
 
 **¡Feliz aprendizaje! 🎓**
