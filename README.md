@@ -356,6 +356,7 @@ Cada tecnología tiene su propia guía detallada en la carpeta `docs/`:
 - [☕ Java con Spring Boot](docs/java-spring.md)
 - [🏗️ Arquitectura de Microservicios](docs/microservices.md)
 - [🐳 Docker y Containerización](docs/docker.md)
+- [📦 Maven - Gestión de Proyectos](docs/maven.md)
 - [📋 OpenAPI/Swagger](docs/swagger.md)
 - [📊 Grafana](docs/grafana.md)
 - [🔍 SonarQube](docs/sonarqube.md)
